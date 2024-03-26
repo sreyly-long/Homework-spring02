@@ -4,8 +4,9 @@ CREATE TABLE students (
      email varchar(50),
      phone_number integer
 );
-CREATE TABLE student_course (
-    id serial PRIMARY KEY ,
-    student_id serial,
-    course_id serial
+
+CREATE TABLE instructors (
+    instructor_id serial PRIMARY KEY ,
+    instructor_name varchar(30),
+    email varchar (30)
 );
