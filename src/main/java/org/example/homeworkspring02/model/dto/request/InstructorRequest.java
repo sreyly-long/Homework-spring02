@@ -1,4 +1,4 @@
-package org.example.homeworkspring02.model;
+package org.example.homeworkspring02.model.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

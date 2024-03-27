@@ -2,7 +2,7 @@ package org.example.homeworkspring02.service.seviceImpl;
 
 import org.apache.ibatis.javassist.NotFoundException;
 import org.example.homeworkspring02.model.Instructor;
-import org.example.homeworkspring02.model.InstructorRequest;
+import org.example.homeworkspring02.model.dto.request.InstructorRequest;
 import org.example.homeworkspring02.repository.InstructorRepository;
 import org.springframework.stereotype.Service;
 
@@ -33,14 +33,20 @@ public class InstructorServiceImpl implements InstructorService{
         instructorRepository.insertInstructor(instructorRequest);
 
     }
-
     @Override
-    public void updateInstructor(Integer id, Instructor instructor) {
+    public void updateInstructor(Integer id, InstructorRequest instructorRequest) throws NotFoundException {
+        if (instructorRepository.findInstructorById(id) == null){
+            throw new NotFoundException ("Instructor does not exist");
+        }
+        instructorRepository.updateInstructor(id,instructorRequest);
 
     }
 
     @Override
-    public void deleteInstructor(Integer id) {
+    public void removeInstructor(Integer id) {
+        boolean isRemove = instructorRepository.removeInstructor(id);
+        System.out.println(isRemove);
+
 
     }
 }
